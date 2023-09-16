@@ -57,3 +57,10 @@ body {
   color: green;
   text-align: right;
 }
+
+h2 {
+  position: absolute;
+  text-align: center;
+  top: 100px;
+  font-size: 50px;
+}
