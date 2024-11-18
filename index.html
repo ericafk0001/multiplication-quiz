@@ -4,6 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Multiplication Quiz</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body></body>
+  <body>
+    <main>
+      <h1>Multiplication App</h1>
+      <div class="settings" id="settings">
+        <label>Time Limit:</label>
+        <select id="time-limit">
+          <option value="0">Infinite</option>
+          <option value="30">30 Seconds</option>
+          <option value="60">60 Seconds</option>
+          <option value="180">180 Seconds</option>
+        </select>
+        <button id="start-btn">Start Quiz</button>
+      </div>
+
+      <div id="quiz">
+        <p>Time Remaining: <span id="timer">Infinite</span></p>
+        <h2 id="question"></h2>
+        <div id="quiz-options">
+          <button id="answer1"></button>
+          <button id="answer2"></button>
+          <button id="answer3"></button>
+          <button id="answer4"></button>
+        </div>
+      </div>
+      <div id="end-screen" class="hidden">
+        <h2>No time left!</h2>
+        <p>Your Score: <span id="score"></span></p>
+        <button id="retry-quiz">Retry</button>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
 </html>
