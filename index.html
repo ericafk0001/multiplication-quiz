@@ -21,13 +21,13 @@
       </div>
 
       <div id="quiz">
-        <p>Time Remaining: <span id="timer">Infinite</span></p>
+        <p>Time Remaining: <span id="timer">No Time selected.</span></p>
         <h2 id="question"></h2>
         <div id="quiz-options">
-          <button id="answer1">A</button>
-          <button id="answer2">B</button>
-          <button id="answer3">C</button>
-          <button id="answer4">D</button>
+          <button id="answer1" class="disabled">A</button>
+          <button id="answer2" class="disabled">B</button>
+          <button id="answer3" class="disabled">C</button>
+          <button id="answer4" class="disabled">D</button>
         </div>
       </div>
       <div id="end-screen" class="hidden">
@@ -35,6 +35,7 @@
         <p>Your Score: <span id="score"></span></p>
         <button id="retry-quiz">Retry</button>
       </div>
+      <button id="restart-quiz">Restart</button>
     </main>
     <script src="script.js"></script>
   </body>

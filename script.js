@@ -18,18 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1000);
   }
 
-  function startQuiz() {
-    timeLimit = parseInt(document.getElementById("time-limit").value);
-    document.getElementById("settings").classList.add("hidden");
-    document.getElementById("quiz").classList.remove("hidden");
-    document.getElementById("end-screen").classList.remove("hidden");
-    score = 0;
-    loadQuestion();
-    if (timeLimit > 0) {
-      startTimer(timeLimit);
-    }
-  }
-
   function loadQuestion() {
     const num1 = Math.floor(Math.random() * 10) + 1;
     const num2 = Math.floor(Math.random() * 10) + 1;
@@ -62,25 +50,37 @@ document.addEventListener("DOMContentLoaded", function () {
     loadQuestion();
   }
 
+  function startQuiz() {
+    timeLimit = parseInt(document.getElementById("time-limit").value);
+    document.getElementById("time-limit").classList.add("disabled");
+    document.getElementById("start-btn").classList.add("disabled");
+    document.getElementById("answer1").classList.remove("disabled");
+    document.getElementById("answer2").classList.remove("disabled");
+    document.getElementById("answer3").classList.remove("disabled");
+    document.getElementById("answer4").classList.remove("disabled");
+    score = 0;
+    loadQuestion();
+    if (timeLimit > 0) {
+      startTimer(timeLimit);
+    }
+  }
+
   function endQuiz() {
-    document.getElementById("quiz").classList.add("hidden");
-    document.getElementById("end-screen").classList.add("hidden");
+    document.getElementById("end-screen").classList.remove("hidden");
     document.getElementById("score").innerText = score;
-    document.getElementById("score").classList.remove("hidden");
   }
 
   function restartQuiz() {
-    document.getElementById("settings").classList.remove("hidden");
-    document.getElementById("quiz").classList.add("hidden");
-    document.getElementById("end-screen").classList.add("hidden");
-  }
-
-  document.getElementById("start-btn").addEventListener("click", startQuiz);
-  document.getElementById("retry-quiz").addEventListener("click", function () {
-    restartQuiz();
     score = 0;
     document.getElementById("score").classList.add("hidden");
-  });
+    alert("skibidi toilet");
+  }
+
+  document
+    .getElementById("restart-quiz")
+    .addEventListener("click", function () {
+      restartQuiz();
+    });
 
   //for loop to loop through answers
   for (let i = 1; i <= 4; i++) {
