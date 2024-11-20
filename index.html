@@ -8,35 +8,43 @@
   </head>
   <body>
     <main>
-      <h1>Multiplication App</h1>
-      <div class="settings" id="settings">
-        <label>Time Limit:</label>
-        <select id="time-limit">
-          <option value="0">Infinite</option>
-          <option value="30">30 Seconds</option>
-          <option value="60">60 Seconds</option>
-          <option value="180">180 Seconds</option>
-        </select>
-        <button id="start-btn">Start Quiz</button>
-      </div>
+      <div id="particles-js"></div>
+      <script src="particles.js"></script>
+      <div id="container">
+        <h1>Multiplication Quiz</h1>
+        <div class="settings" id="settings">
+          <label class="time-title">Time Limit:</label>
+          <select id="time-limit">
+            <option value="0">Infinite</option>
+            <option value="5">debug 5 sec</option>
+            <option value="30">30 Seconds</option>
+            <option value="60">60 Seconds</option>
+            <option value="180">180 Seconds</option>
+          </select>
+          <button id="start-btn">Start Quiz</button>
+        </div>
 
-      <div id="quiz">
-        <p>Time Remaining: <span id="timer">No Time selected.</span></p>
-        <h2 id="question"></h2>
-        <div id="quiz-options">
-          <button id="answer1" class="disabled">A</button>
-          <button id="answer2" class="disabled">B</button>
-          <button id="answer3" class="disabled">C</button>
-          <button id="answer4" class="disabled">D</button>
+        <div id="quiz">
+          <p class="time-title">Time Remaining: <span id="timer"></span></p>
+          <h3>Question: <span id="question"></span></h3>
+          <div id="quiz-options">
+            <button id="answer1" class="disabled answer-option">A</button>
+            <button id="answer2" class="disabled answer-option">B</button>
+            <button id="answer3" class="disabled answer-option">C</button>
+            <button id="answer4" class="disabled answer-option">D</button>
+          </div>
+        </div>
+        <div id="restartContainer">
+          <button id="restart-quiz">Restart</button>
         </div>
       </div>
-      <div id="end-screen" class="hidden">
-        <h2>No time left!</h2>
-        <p>Your Score: <span id="score"></span></p>
-        <button id="retry-quiz">Retry</button>
-      </div>
-      <button id="restart-quiz">Restart</button>
     </main>
+    <div id="end-screen" class="hidden">
+      <h2>No time left!</h2>
+      <p>Your Score: <span id="score"></span></p>
+      <button id="retry-quiz">Retry</button>
+    </div>
     <script src="script.js"></script>
+    <script src="particle.js"></script>
   </body>
 </html>

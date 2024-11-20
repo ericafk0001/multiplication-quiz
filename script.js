@@ -1,12 +1,22 @@
+/* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+particlesJS.load("particles-js", "./particles-config.json", function () {
+  console.log("callback - particles.js config loaded");
+});
+
 let timeLimit = 0;
 let timer = 0;
 let currentQuestion = 0;
 let score = 0;
+let timeRemaining;
+let restarted = 0;
 
 document.addEventListener("DOMContentLoaded", function () {
   function startTimer(seconds) {
-    let timeRemaining = seconds;
     document.getElementById("timer").innerText = timeRemaining;
+    timeRemaining = seconds;
+    if (timeRemaining !== null) {
+      document.getElementById("timer").innerText = timeRemaining;
+    }
 
     timer = setInterval(function () {
       timeRemaining--;
@@ -52,12 +62,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function startQuiz() {
     timeLimit = parseInt(document.getElementById("time-limit").value);
+    document.getElementById("timer").classList.remove("hidden");
     document.getElementById("time-limit").classList.add("disabled");
     document.getElementById("start-btn").classList.add("disabled");
     document.getElementById("answer1").classList.remove("disabled");
     document.getElementById("answer2").classList.remove("disabled");
     document.getElementById("answer3").classList.remove("disabled");
     document.getElementById("answer4").classList.remove("disabled");
+    restarted = 0;
     score = 0;
     loadQuestion();
     if (timeLimit > 0) {
@@ -66,15 +78,33 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function endQuiz() {
-    document.getElementById("end-screen").classList.remove("hidden");
+    if (restarted === 1) {
+      document.getElementById("end-screen").classList.add("hidden");
+    } else {
+      document.getElementById("end-screen").classList.remove("hidden");
+    }
     document.getElementById("score").innerText = score;
   }
 
   function restartQuiz() {
     score = 0;
-    document.getElementById("score").classList.add("hidden");
-    alert("skibidi toilet");
+    timeRemaining = 0;
+    document.getElementById("timer").classList.add("hidden");
+    document.getElementById("end-screen").classList.add("hidden");
+    document.getElementById("time-limit").classList.remove("disabled");
+    document.getElementById("start-btn").classList.remove("disabled");
+    document.getElementById("answer1").classList.add("disabled");
+    document.getElementById("answer2").classList.add("disabled");
+    document.getElementById("answer3").classList.add("disabled");
+    document.getElementById("answer4").classList.add("disabled");
+    restarted = 1;
+    console.log("restarted");
   }
+
+  //event listeners
+  document.getElementById("start-btn").addEventListener("click", function () {
+    startQuiz();
+  });
 
   document
     .getElementById("restart-quiz")
