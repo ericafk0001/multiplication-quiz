@@ -12,6 +12,9 @@
       <script src="particles.js"></script>
       <div id="container">
         <h1>Multiplication Quiz</h1>
+        <div id="end-screen">
+          <p>Your Score: <span id="score"></span></p>
+        </div>
         <div class="settings" id="settings">
           <label class="time-title">Time Limit:</label>
           <select id="time-limit">
@@ -39,11 +42,7 @@
         </div>
       </div>
     </main>
-    <div id="end-screen" class="hidden">
-      <h2>No time left!</h2>
-      <p>Your Score: <span id="score"></span></p>
-      <button id="retry-quiz">Retry</button>
-    </div>
+
     <script src="script.js"></script>
     <script src="particle.js"></script>
   </body>
